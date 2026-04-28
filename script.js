@@ -93,17 +93,21 @@ for (let i = 0; i < 10; i++) {
   bulbsRow.appendChild(bulb);
 }
 
-// Polaroid cards
-for (let i = 0; i < 8; i++) {
-  const n    = 7 + i;
-  const card = document.createElement('div');
-  card.className = 'string-card reveal';
-  card.style.setProperty('--rot', cardRotations[i] + 'deg');
-  card.innerHTML = `<img src="${img(n)}" alt="Srishti photo ${n}" loading="lazy">
-                    <p class="string-caption">${cardCaptions[i]}</p>`;
-  card.addEventListener('click', () => openLightbox(img(n)));
-  stringPhotos.appendChild(card);
+// Polaroid cards — doubled for seamless infinite loop
+function buildCards() {
+  for (let i = 0; i < 8; i++) {
+    const n    = 7 + i;
+    const card = document.createElement('div');
+    card.className = 'string-card';
+    card.style.setProperty('--rot', cardRotations[i] + 'deg');
+    card.innerHTML = `<img src="${img(n)}" alt="Srishti photo ${n}" loading="lazy">
+                      <p class="string-caption">${cardCaptions[i]}</p>`;
+    card.addEventListener('click', () => openLightbox(img(n)));
+    stringPhotos.appendChild(card);
+  }
 }
+buildCards(); // original set
+buildCards(); // duplicate set — keeps animation seamless
 
 /* ══════════════════════════════
    CIRCULAR PORTRAITS  (photos 16–21)
