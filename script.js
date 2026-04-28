@@ -109,6 +109,15 @@ function buildCards() {
 buildCards(); // original set
 buildCards(); // duplicate set — keeps animation seamless
 
+// Force animation to start clean from position 0 (slide LEFT)
+stringPhotos.style.transform = 'translateX(0)';
+stringPhotos.style.animation = 'none';
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    stringPhotos.style.animation = '';
+  });
+});
+
 /* ══════════════════════════════
    CIRCULAR PORTRAITS  (photos 16–21)
 ══════════════════════════════ */

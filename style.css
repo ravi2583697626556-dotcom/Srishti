@@ -482,7 +482,9 @@ body {
   display: flex;
   gap: clamp(12px, 2vw, 24px);
   width: max-content;
-  animation: slideCards 30s linear infinite;
+  will-change: transform;
+  animation: slideCards 28s linear infinite;
+  animation-direction: normal;  /* left = negative X = correct */
 }
 
 /* pause on hover */
@@ -491,8 +493,8 @@ body {
 }
 
 @keyframes slideCards {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .string-card {
